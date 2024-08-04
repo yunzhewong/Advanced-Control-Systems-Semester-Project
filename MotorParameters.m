@@ -1,12 +1,12 @@
 %% Motor 1
-R = 2.6;
-K_m = 0.5369;
-I_noload = 0.1;
+% R = 2.6;
+% K_m = 0.5369;
+% I_noload = 0.1;
 
 %% Motor 2
-% R = 2;
-% K_m = 27e-3;
-% I_noload = 0.26;
+R = 2;
+K_m = 27e-3;
+I_noload = 0.26;
 
 low_torque = 0.0254;
 high_torque = 0.0694;

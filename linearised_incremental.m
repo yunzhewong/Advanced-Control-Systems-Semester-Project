@@ -35,7 +35,7 @@ zpksys = zpk(sys)
 s = tf('s');
 
 
-w_c = 900;
+w_c = 20;
 Mf_target = deg2rad(60);
 
 tz2 = 10 / w_c;
@@ -46,8 +46,7 @@ tz1 = tan(phi_c) / w_c;
 
 K = (w_c * abs(0.1j + 1)) / (abs(10j + 1)*abs(tz1*w_c*1i + 1)*abs(evalfr(sys, w_c)));
 
-C = 0.0001 * K * (tz1 * s + 1) * (tz2 * s + 1)^2 / ((tp1 * s + 1)^2 * (0.0001*s + 1))
-
+C = 5 * K * (tz1 * s + 1) * (tz2 * s + 1)^2 / ((tp1 * s + 1)^2 * s^2)
 
 figure
 bode(C)

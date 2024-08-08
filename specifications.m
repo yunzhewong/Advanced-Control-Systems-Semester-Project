@@ -9,7 +9,7 @@ overshoot_percent = OVERSHOOT_DEGREES / (HIGH_REFERENCE_DEGREES - LOW_REFERENCE_
 
 
 syms zeta
-zeta = -1 * solve(log(overshoot_percent) == -pi * zeta / (sqrt(1 - zeta^2)))
+zeta = solve(log(overshoot_percent) == -pi * zeta / (sqrt(1 - zeta^2)))
 
 syms wn
 wn = solve(-SETTLING_TIME_SECONDS * zeta * wn == log((2 / 100) * sqrt(1 - zeta^2)))

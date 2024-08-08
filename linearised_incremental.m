@@ -30,13 +30,21 @@ D
 
 sys = tf(b, a);
 
-s = tf('s')
-
-w_c = 3;
-tz = 10 / w_c
-tp = 1 / (10 * w_c)
-C = (tz*s + 1)^2/(tp*s + 1)^2
 zpksys = zpk(sys)
+
+s = tf('s');
+
+w_c = 100;
+tz1 = 100 / (w_c)
+tp = 1 / (100 * w_c);
+C = ((s + 10) ^ 2) * (s - 5) 
+
+
+figure
+bode(s + 10)
+
+figure
+bode(s - 10)
 
 figure
 bode(sys)
@@ -46,6 +54,11 @@ bode(C)
 
 figure
 bode(sys * C)
+
+figure
+step(feedback(sys * C, 1))
+
+test = zpk(feedback(sys * C, 1))
 
 figure
 rlocus(sys * C)

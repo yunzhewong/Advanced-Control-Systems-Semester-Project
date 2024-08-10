@@ -25,7 +25,7 @@ sys = tf(sys_b, sys_a);
 
 w_c = 6;
 
-controller = zpk([], [0 -100], 5e4);
+controller = zpk([-10+460i -10-460i -3-6i -3+6i -4 -40000], [-5 0 -10000 -10000 -10000 -400], 4e4);
 [c_b, c_a] = tfdata(controller,'v');
 
 

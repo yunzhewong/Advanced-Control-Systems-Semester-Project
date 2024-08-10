@@ -13,7 +13,7 @@ K_s
 A = [0 0 1 0 0;
      0 0 0 1 0;
      -K_s/J_m K_s/J_m 0 0 0;
-     K_s/J_t -K_s/J_t-(sqrt(3)/2)*m*g*l/J_t 0 0 0;
+     K_s/J_t -(K_s/J_t)-((sqrt(3)/2)*m*g*l/J_t) 0 0 0;
      0 0 -K_m/L_a 0 -R/L_a];
 
 B = [0; 0; K_m/(R * J_m); 0; 1/L_a];
@@ -21,17 +21,15 @@ B = [0; 0; K_m/(R * J_m); 0; 1/L_a];
 C = [0 1 0 0 0];
 D = 0;
 
-A
-B
-C
-D
-
-[b, a] = ss2tf(A, B, C, D);
-sys = tf(b, a)
+[sys_b, sys_a] = ss2tf(A, B, C, D);
+sys = tf(sys_b, sys_a);
 
 w_c = 20;
 
-C = zpk([-10+460i -10-460i -3-9i -3+9i -2], [-5 0 -10000 -10000 -10000], 1e7)
+C = zpk([-10+460i -10-460i -3-9i -3+9i -4], [-5 0 -10000 -10000 -10000], 10e7);
+% C = zpk([], [0 -10 -10 -10 -10], 1e5)
+[c_b, c_a] = tfdata(sys,'v');
+
 figure
 bode(C)
 
@@ -44,6 +42,7 @@ margin(C * sys)
 figure
 rlocus(C * sys)
 
-closedloop = feedback(C*sys, 1)
+
 figure
-step(closedloop)
+step(sys, 2)
+

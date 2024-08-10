@@ -26,23 +26,22 @@ sys = tf(sys_b, sys_a);
 
 w_c = 20;
 
-C = zpk([-10+460i -10-460i -3-9i -3+9i -4], [-5 0 -10000 -10000 -10000], 10e7);
-% C = zpk([], [0 -10 -10 -10 -10], 1e5)
-[c_b, c_a] = tfdata(sys,'v');
+controller = zpk([-10+460i -10-460i -3-9i -3+9i -4], [-5 0 -10000 -10000 -10000], 1e7);
+[c_b, c_a] = tfdata(controller,'v');
 
 figure
-bode(C)
+bode(controller)
 
 figure
 bode(sys)
 
 figure
-margin(C * sys)
+margin(controller * sys)
 
 figure
-rlocus(C * sys)
+rlocus(controller * sys)
 
 
 figure
-step(sys, 2)
+step(feedback(controller * sys, 1))
 

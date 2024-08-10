@@ -28,4 +28,4 @@ sigma = zeta * wn;
 wd = wn * sqrt(1-zeta^2);
 
 fprintf("Minimum Sigma: %.3f\n", sigma)
-fprintf("Corresponding Damped Frequency (w_d): %.3f\n", wd)
+fprintf("Minimum Sigma: %.3f\n", sigma)

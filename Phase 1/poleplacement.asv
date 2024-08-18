@@ -1,0 +1,20 @@
+syms s
+
+dominant_zeta = 0.55;
+dominant_sigma = 2.5;
+dominant_wn = dominant_sigma / dominant_zeta;
+
+fast_sigma = 15;
+fast_zeta = 0.8;
+fast_wn = fast_sigma / fast_zeta;
+
+fast_pair = (s + fast_sigma - fast_wn )
+
+
+
+
+closed_loop = (s + 20)*(s + 4 + 5i)*(s+4-5i)*(s + 20 + 460i)*(s+20-460i);
+original_poles = (s^2 + 84.32) * (s^2 + 2.121e5);
+K = 2.8419e6;
+b = simplify(closed_loop - original_poles * s) / K
+res = factor(b, s, "FactorMode", "complex")

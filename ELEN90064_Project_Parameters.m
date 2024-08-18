@@ -25,7 +25,8 @@ vision_fps = 25;
 
 % FOR ABSOLUTE ENCODER
 % > Number of counts per revolution
-absolute_encoder_counts_per_revolution = 128;
+% absolute_encoder_counts_per_revolution = 128;
+absolute_encoder_counts_per_revolution = 4096;
 
 % FOR POTENTIOMETER
 % > Percentage linearity [percent]

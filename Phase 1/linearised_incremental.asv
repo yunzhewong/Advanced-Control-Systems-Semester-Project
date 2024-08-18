@@ -22,20 +22,32 @@ D = 0;
 
 [sys_b, sys_a] = ss2tf(A, B, C, D);
 sys = tf(sys_b, sys_a);
+zpksys = zpk(sys)
 
-w_c = 6;
+w_c = 12;
 
-controller = zpk([-10+460i -10-460i -3-6i -3+6i -4 -40000], [-5 0 -10000 -10000 -10000 -400], 4e4);
-[c_b, c_a] = tfdata(controller,'v');
+% controller = zpk([-10+460i -10-460i -3-6i -3+6i -4 -40000], [-5 0 -10000 -10000 -10000 -500], 4e4);
+% [c_b, c_a] = tfdata(controller,'v');
 
+
+controller = zpk([-10+460i -10-460i -3-6i -3+6i -4 -40000], [-5 0 -10000 -10000 -10000 -500], 4e4);
+% [c_b, c_a] = tfdata(controller,'v');
+cl = feedback(controller * sys, 1)
 
 figure
 bode(zpk([-1], [], 1))
+
+figure
+bode(zpk([], [-1], 1))
+
 figure
 bode(controller)
 
 figure
 bode(sys)
+
+figure
+rlocus(sys)
 
 figure
 margin(controller * sys)

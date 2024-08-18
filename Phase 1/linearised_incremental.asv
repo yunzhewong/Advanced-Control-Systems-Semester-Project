@@ -24,20 +24,17 @@ D = 0;
 sys = tf(sys_b, sys_a);
 zpksys = zpk(sys);
 
-w_c = 12;
+w_c = 6;
 
 % controller = zpk([-10+460i -10-460i -3-6i -3+6i -4 -40000], [-5 0 -10000 -10000 -10000 -500], 4e4);
 % [c_b, c_a] = tfdata(controller,'v');
 
 
-controller = zpk([-0.1*w_c -0.1*w_c], [-10*w_c -10*w_c 0 -100 -100], test(180));
-[c_b, c_a] = tfdata(controller,'v');
+controller = zpk([-10 -5], [-200 0 -100],1e4);
 
-figure
-bode(zpk([-1], [], 1))
-
-figure
-bode(zpk([], [-1], 1))
+SAMPLING_FREQUENCY = 100
+discrete_controller = c2d(controller, 1 / SAMPLING_FREQUENCY, 'zoh');
+[c_b, c_a] = tfdata(discrete_controller,'v');
 
 figure
 bode(controller)
@@ -48,11 +45,17 @@ bode(sys)
 figure
 margin(controller * sys)
 
+figure
+rlocus(controller * sys)
+
 
 
 figure
-step(feedback(controller * sys, 1), 10)
+step(feedback(controller * sys, 1))
 
+
+figure
+step(feedback(controller * sys, 1))
 function val = test(db)
     val = 10 ^ (db / 20);
 end

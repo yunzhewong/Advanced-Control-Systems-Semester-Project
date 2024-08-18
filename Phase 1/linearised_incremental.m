@@ -30,8 +30,14 @@ w_c = 6;
 % [c_b, c_a] = tfdata(controller,'v');
 
 
-controller = zpk([-10 -5], [-200 0 -1000],1e5);
+controller = zpk([-10 -5], [-150 0 -100],1e4);
 [c_b, c_a] = tfdata(controller,'v');
+
+
+SAMPLING_FREQUENCY = 25;
+sampling_time = 1 / SAMPLING_FREQUENCY;
+discrete_controller = c2d(controller, sampling_time, 'zoh');
+[c_disc_b, c_disc_a] = tfdata(discrete_controller,'v');
 
 figure
 bode(controller)

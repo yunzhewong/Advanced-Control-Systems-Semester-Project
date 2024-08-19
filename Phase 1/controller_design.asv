@@ -7,7 +7,11 @@ margin(sys)
 % with lead and integrator
 % test = zpk([], [0 -0.1 -100], 10^(103 / 20));
 
-test = zpk([-1.2 -10], [-120 0], 1);
+lead1 = zpk([-1], [-100], 1);
+lag = zpk([-15], [-0.15], 1);
+integrator = 1 / s;
+lowpass = 
+test = lead1*lag* 10^(30 / 20)
 figure
 margin(sys * test)
 
@@ -26,17 +30,9 @@ step(feedback(sys * test, 1))
 % rlocus(sys * double_lead_integrator)
 % 
 % % with gain correctly picked
-
-controller = zpk([-5 -10.5], [0 -200 -100], 1e4*10^(0/20));
-
-figure
-rlocus(sys * controller)
-
-figure
-margin(sys * controller)
-
-figure
-step(feedback(sys * controller, 1));
+% controller = zpk([-5 -10], [0 -200 -100], 1e4);
+% figure
+% step(feedback(sys * controller, 1));
 % 
 % [c_b, c_a] = tfdata(test,'v');
 % 

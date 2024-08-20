@@ -5,7 +5,9 @@ SETTLING_TIME_SECONDS = 2; % 2% settling time
 LOW_REFERENCE_DEGREES = 15;
 HIGH_REFERENCE_DEGREES = 45;
 
-overshoot_percent = OVERSHOOT_DEGREES / (HIGH_REFERENCE_DEGREES - LOW_REFERENCE_DEGREES);
+rise_difference = (HIGH_REFERENCE_DEGREES - LOW_REFERENCE_DEGREES);
+overshoot_percent = OVERSHOOT_DEGREES / rise_difference;
+steady_state_error_percent = STEADY_STATE_ERROR_DEGREES / rise_difference;
 
 
 syms zeta

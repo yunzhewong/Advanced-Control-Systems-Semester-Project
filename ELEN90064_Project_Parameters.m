@@ -21,7 +21,7 @@ init = [theta_m_init; theta_l_init; thetadot_m_init; thetadot_l_init; Ia_init];
 % FOR VISION:
 % > The frames per second [fps]
 % > Allowed values: 25, 50, 100
-vision_fps = 25;
+vision_fps = 50;
 
 % FOR ABSOLUTE ENCODER
 % > Number of counts per revolution
@@ -48,6 +48,7 @@ gyro_sigma_drift = deg2rad(5);
 m = 0.1;
 l = 0.1;
 g = 9.81;
+J_t = 0.001;
 
 %% Wave Parameters
 wave_amplitude = deg2rad(15);

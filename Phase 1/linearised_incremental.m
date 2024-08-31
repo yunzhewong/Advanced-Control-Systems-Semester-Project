@@ -12,6 +12,8 @@ B = [0; 0; K_m/(R * J_m); 0; 1/L_a];
 C = [0 1 0 0 0];
 D = 0;
 
+
+
 [b, a] = ss2tf(A, B, C, D);
 sys = tf(b, a)
 figure

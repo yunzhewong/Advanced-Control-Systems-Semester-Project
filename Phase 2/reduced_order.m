@@ -8,6 +8,11 @@ B = [0; 0; K_m/(J_m * R); 0];
 C = [0 1 0 0];
 D = 0;
 
+eig(A)
+
+x1_bar = deg2rad(31.78);
+x2_bar = deg2rad(30);
+
 [b, a] = ss2tf(A, B, C, D);
 sys = tf(b, a)
 figure

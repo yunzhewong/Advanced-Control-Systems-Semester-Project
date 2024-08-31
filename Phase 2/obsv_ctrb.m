@@ -11,6 +11,8 @@ B = [0; 0; 0; 0; 1/L_a];
 C = [0 1 0 0 0];
 D = 0;
 
+eig(A)
+
 [b, a] = ss2tf(A, B, C, D);
 sys = tf(b, a)
 figure

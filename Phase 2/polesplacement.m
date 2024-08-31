@@ -9,3 +9,5 @@ K_x = K(1, 2:5);
 [b, a] = ss2tf(A, B, C, D);
 sys = tf(b, a);
 N_x = 1 / dcgain(sys);
+
+A_int_disc = [1 C; zeros(4, 1) A];

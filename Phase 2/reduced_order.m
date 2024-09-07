@@ -1,5 +1,7 @@
 format short g
 
+K_s = 1.58;
+
 A = [0 0 1 0;
      0 0 0 1;
      -K_s/J_m K_s/J_m -K_m^2/(J_m*R) 0;

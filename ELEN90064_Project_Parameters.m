@@ -54,3 +54,7 @@ J_t = 0.001;
 wave_amplitude = deg2rad(15);
 wave_offset = deg2rad(30);
 wave_period = 6;
+
+%% Sampling Parameters
+max_sampling_frequency = 50;
+min_sampling_time = 1/50;

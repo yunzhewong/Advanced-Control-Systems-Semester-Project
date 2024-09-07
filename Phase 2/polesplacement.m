@@ -3,17 +3,17 @@ ideal_zeta = 0.4954;
 ideal_sigma = 2.026;
 ideal_wn = ideal_sigma / ideal_zeta;
 
-picked_zeta = 0.55;
-picked_wn = ideal_wn * 1.1;
+picked_zeta = 0.75;
+picked_wn = ideal_wn * 1;
 
 fprintf("Zeta: %.4f\n", picked_zeta);
 fprintf("Natural Frequency: %.4f\n", picked_wn);
 
 ideal_sys = tf(1, [1 2*picked_wn*picked_zeta picked_wn^2]);
-ideal_poles = pole(ideal_sys);
+ideal_poles = pole(ideal_sys)
 
 % Pole Definition
-p = [-20 ideal_poles' -25+460i, -25-460i];
+p = [-25 ideal_poles' -30+460i, -30-460i];
 
 A_cont_aug = [0 C; zeros(4, 1) A];
 B_cont_aug = [0; B];

@@ -10,9 +10,7 @@ fprintf("Zeta: %.4f\n", picked_zeta);
 fprintf("Natural Frequency: %.4f\n", picked_wn);
 
 ideal_sys = tf(1, [1 2*picked_wn*picked_zeta picked_wn^2]);
-ideal_poles = pole(ideal_sys)
-
-eig(A)
+ideal_poles = pole(ideal_sys);
 
 % Pole Definition
 p = [-20 ideal_poles' -25+460i, -25-460i];
@@ -22,14 +20,14 @@ B_cont_aug = [0; B];
 K_cont = place(A_cont_aug, B_cont_aug, p);
 K_cont_int = K_cont(1,1);
 K_cont_x = K_cont(1, 2:5);
-eig(A_cont_aug - B_cont_aug*K_cont)
 
+% Discretised version
 sys = ss(A, B, C, D);
 sys_disc = c2d(sys, min_sampling_time, "zoh");
 
 A_disc_aug = [1 sys_disc.C; zeros(4,1) sys_disc.A];
 B_disc_aug = [0; sys_disc.B];
-disc_poles = exp(p .* min_sampling_time)
+disc_poles = exp(p .* min_sampling_time);
 K_disc = place(A_disc_aug, B_disc_aug, disc_poles);
 K_disc_int = K_disc(1,1);
 K_disc_x = K_disc(1, 2:5);

@@ -8,7 +8,7 @@ A = [0 0 1 0 0;
      K_s/J_t -(K_s/J_t)-((sqrt(3)/2)*m*g*l/J_t) 0 0 0;
      0 0 -K_m/L_a 0 -R/L_a];
 B = [0; 0; 0; 0; 1/L_a];
-C = [1 0 0 0 0];
+C = [0 1 0 0 0];
 D = 0;
 
 % eig(A)
@@ -20,9 +20,9 @@ D = 0;
 
 Co = ctrb(A, B)
 cond(Co)
-rank(Co)
+rank(Co, 1e-15)
 
 Ob = obsv(A, C)
 cond(Ob)
-rank(Ob)
+rank(Ob, 1e-15)
 

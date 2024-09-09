@@ -1,0 +1,5 @@
+A_s = [0 1; -1 0];
+
+C_sin = [0 1 0 0;
+         0 0 0 1];
+A_sin_aug = [A_s C_sin; zeros(4,2) A]

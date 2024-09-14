@@ -11,7 +11,7 @@ J_observer_transpose = place(A', C_o', observer_poles);
 J_observer = J_observer_transpose';
 
 observer_matrix = A - J_observer*C_o;
-eig(observer_matrix);
+eig(observer_matrix)
 
 % Discrete Time - Reduced Order Observer
 disc_a = sys_disc.A;

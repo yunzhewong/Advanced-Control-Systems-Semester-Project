@@ -9,21 +9,23 @@ A = [0 0 1 0 0;
      0 0 -K_m/L_a 0 -R/L_a];
 B = [0; 0; 0; 0; 1/L_a];
 C = [0 1 0 0 0];
-% C = [1 0 0 0 0];
 D = 0;
 
-% eig(A)
-% 
-% [b, a] = ss2tf(A, B, C, D);
-% sys = tf(b, a)
-% figure
-% step(sys)
+eig(A)
 
-Co = ctrb(A, B)
-cond(Co)
+Co = ctrb(A, B);
+cond(Co);
 rank(Co, 1e-15)
 
-Ob = obsv(A, C)
-cond(Ob)
-rank(Ob, 1e-15)
+Ob = obsv(A, C);
+cond(Ob);
+rank(obsv(A, [0 1 0 0 0]), 1e-15)
+rank(obsv(A, [1 0 0 0 0]), 1e-15)
+rank(obsv(A, [1 0 0 0 0]), 1e-15)
+rank(obsv(A, [0 0 1 0 0]), 1e-15)
+rank(obsv(A, [0 0 0 1 0]), 1e-15)
+rank(obsv(A, [0 1 0 1 0]), 1e-15)
+rank(obsv(A, [1 0 1 0 0]), 1e-15)
+rank(obsv(A, [1 0 0 1 0]), 1e-15)
+
 

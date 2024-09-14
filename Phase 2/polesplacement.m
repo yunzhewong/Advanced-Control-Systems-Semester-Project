@@ -18,6 +18,8 @@ p = [-25 ideal_poles' -30+460i, -30-460i];
 A_cont_aug = [0 C; zeros(4, 1) A];
 B_cont_aug = [0; B];
 
+eig(A_cont_aug)
+
 ctrb(A_cont_aug, B_cont_aug)
 K_cont = place(A_cont_aug, B_cont_aug, p);
 K_cont_int = K_cont(1,1);

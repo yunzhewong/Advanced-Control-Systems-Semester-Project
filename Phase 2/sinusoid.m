@@ -4,7 +4,7 @@ w = 2 * pi / T;
 A_s = [0 w; -w 0];
 
 sinusoid_ss = ss(A_s, [0; 0], [0 0], 0);
-disc_sinusoid_ss = c2d(sinusoid_ss, min_sampling_time, "zoh")
+disc_sinusoid_ss = c2d(sinusoid_ss, min_sampling_time, "zoh");
 
 C_sin = [0 1 0 0;
          0 0 0 0];

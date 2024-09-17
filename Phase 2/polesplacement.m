@@ -13,7 +13,7 @@ ideal_sys = tf(1, [1 2*picked_wn*picked_zeta picked_wn^2]);
 ideal_poles = pole(ideal_sys)
 
 % Pole Definition
-p = [-25 ideal_poles' -30+460i, -30-460i];
+p = [-25 ideal_poles' -30+460i, -30-460i]
 
 A_cont_aug = [0 C; zeros(4, 1) A];
 B_cont_aug = [0; B];

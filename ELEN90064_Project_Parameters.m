@@ -30,7 +30,7 @@ absolute_encoder_counts_per_revolution = 4096;
 
 % FOR POTENTIOMETER
 % > Percentage linearity [percent]
-potentiometer_linearity_percent = 20;
+potentiometer_linearity_percent = 0.2;
 
 % FOR TACHOMETER
 % > Number of counts per revolution

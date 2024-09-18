@@ -1,15 +1,13 @@
-C_o = [1 0 0 0];
-
 % Continuous Time - Full State Observer Design
 eig(A);
 
-closest_pole = -30;
+closest_pole = -100;
 
 observer_poles = [closest_pole closest_pole-1 closest_pole-2 closest_pole-3];
-J_observer_transpose = place(A', C_o', observer_poles);
+J_observer_transpose = place(A', C_m', observer_poles);
 J_observer = J_observer_transpose';
 
-observer_matrix = A - J_observer*C_o;
+observer_matrix = A - J_observer*C_m;
 eig(observer_matrix)
 
 % Discrete Time - Reduced Order Observer

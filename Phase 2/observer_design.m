@@ -5,7 +5,7 @@ closest_pole = -100;
 
 observer_poles = [closest_pole closest_pole-1 closest_pole-2 closest_pole-3];
 J_observer_transpose = place(A', C_m', observer_poles);
-J_observer = J_observer_transpose';
+J_observer = J_observer_transpose'
 
 observer_matrix = A - J_observer*C_m;
 eig(observer_matrix)
@@ -32,5 +32,5 @@ A_bb_disc = disc_a(2:4, 2:4);
 B_a_disc = disc_b(1:1, :);
 B_b_disc = disc_b(2:4, :);
 
-disc_poles = exp([closest_pole, closest_pole+1, closest_pole+2] * min_sampling_time);
-L_r_disc = place(A_bb_disc', A_ab_disc', disc_poles)';
+disc_poles = exp([closest_pole, closest_pole-1, closest_pole-2] * min_sampling_time);
+L_r_disc = place(A_bb_disc', A_ab_disc', disc_poles)'

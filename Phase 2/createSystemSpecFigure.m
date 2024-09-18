@@ -1,6 +1,5 @@
-function createSystemSpecFigure()
-    f = figure;
-    f.Position = [100 100 1000 500];
+function createSystemSpecFigure(fig, lowss, highss)
+    fig.Position = [100 100 1000 500];
 
     hold on
 
@@ -21,14 +20,14 @@ function createSystemSpecFigure()
     two_percent_degrees = 0.02 * rise_difference;
     
     fill(overshoot_x, max_overshoot_y, "k", "FaceAlpha", 0.5)
-    yline(HIGH_REFERENCE_DEGREES + two_percent_degrees, ":", "LineWidth", 1, "Color", "k")
-    yline(HIGH_REFERENCE_DEGREES - two_percent_degrees, ":", "LineWidth", 1, "Color", "k")
+    yline(highss + two_percent_degrees, ":", "LineWidth", 1, "Color", "k")
+    yline(highss - two_percent_degrees, ":", "LineWidth", 1, "Color", "k")
     yline(HIGH_REFERENCE_DEGREES + STEADY_STATE_ERROR_DEGREES, "-", "LineWidth", 1, "Color", "b")
     yline(HIGH_REFERENCE_DEGREES - STEADY_STATE_ERROR_DEGREES, "-", "LineWidth", 1, "Color", "b")
     
     fill(overshoot_x, min_overshoot_y, "k", "FaceAlpha", 0.5)
-    yline(LOW_REFERENCE_DEGREES + two_percent_degrees, ":", "LineWidth", 1, "Color", "k")
-    yline(LOW_REFERENCE_DEGREES - two_percent_degrees, ":", "LineWidth", 1, "Color", "k")
+    yline(lowss + two_percent_degrees, ":", "LineWidth", 1, "Color", "k")
+    yline(lowss - two_percent_degrees, ":", "LineWidth", 1, "Color", "k")
     yline(LOW_REFERENCE_DEGREES + STEADY_STATE_ERROR_DEGREES, "-", "LineWidth", 1, "Color", "b")
     yline(LOW_REFERENCE_DEGREES - STEADY_STATE_ERROR_DEGREES, "-", "LineWidth", 1, "Color", "b")
     

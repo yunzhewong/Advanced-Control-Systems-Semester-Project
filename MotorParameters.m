@@ -17,7 +17,7 @@ omega_noload = 439.823;
 I_noload = 0.26;
 J_m = 7.5e-6;
 K_m = 27e-3;
-R = 2;
+R_a = 2;
 L_a = 1.3e-3;
 
 %% Motor 3

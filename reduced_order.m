@@ -14,6 +14,9 @@ C_l = [0 1 0 0];
 
 x1_bar = deg2rad(31.78);
 x2_bar = deg2rad(30);
+V_bar = ((m*g*l/2)/K_m + I_noload)*R_a;
+
+disc_sys = c2d(ss(A,B,C_l, []), min_sampling_time, 'zoh');
 
 % [b, a] = ss2tf(A, B, C_m, 0);
 % 

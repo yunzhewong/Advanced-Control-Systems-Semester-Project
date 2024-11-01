@@ -5,9 +5,10 @@ C_aug = [0 C_l];
 nx = size(A_aug, 2);
 nu = size(B_aug, 2);
 
-C_q = [5 C_l];
+gamma = 6;
+C_q = [gamma C_l];
 Q = C_q'*C_q;
-R = 200;
+R = 231;
 [P, ~] = idare(A_aug, B_aug, Q, R);
 
 ny = size(C_aug, 1);
@@ -37,7 +38,7 @@ OV(1).Max = deg2rad(45) - x2_bar;
 OV(1).MinECR = 0.5;
 OV(1).MaxECR = 0.5;
 
-prediction_horizon = 20;
+prediction_horizon = 100;
 control_horizon = prediction_horizon;
 mpc_obj = mpc(mpc_plant, min_sampling_time, prediction_horizon, control_horizon, W, MV, OV);
 

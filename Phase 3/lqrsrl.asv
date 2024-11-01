@@ -2,7 +2,10 @@ close all
 
 A_aug = [0 C_l; zeros(4, 1) A];
 B_aug = [0; B];
-C_aug = [3 C_l];
+C_aug = [0 C_l];
+
+o = obsv(A_aug, C_aug)
+[A_bar, C_barobsvf(A_aug, B_aug, C_aug)
 
 % Plotting of Symmetric Root Locus
 [b, a] = ss2tf(A_aug, B_aug, C_aug, 0);
@@ -20,8 +23,8 @@ Q = C_aug' * C_aug;
 R = rho;
 
 [K, S, P] = lqr(A_aug, B_aug, Q, R);
-K_int = K(1);
-K_x = K(2:end);
+K_int_srl = K(1);
+K_x_srl = K(2:end);
 
 function out = inverse(in)
     out = in(:, :);
